@@ -33,7 +33,7 @@ public class UFQuickUnion {
         return root(p) == root(q);
     }
 
-   /* private int find(int p) { // Find component name.
+   /* private int find(int p) { // Find component name.//similar to root()
         while (p != id[p])
             p = id[p];
         return p;
