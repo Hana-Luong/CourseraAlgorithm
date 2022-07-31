@@ -19,26 +19,27 @@ public class UFWeightedQuickUnion {
     }
 
     public boolean connected(int p, int q) {
-        return find(p) == find(q);
+        return findRoot(p) == findRoot(q);
     }
 
-    private int find(int p) {
-        while (p != id[p])
-            p = id[p];      //finally find the root.
-        return p;
+    private int findRoot(int k) {
+        while (k != id[k])
+            k = id[k];      //finally find the root.
+        return k;
     }
 
     public void union(int p, int q) {
-        int i = find(p);
-        int j = find(q);
+        int i = findRoot(p);
+        int j = findRoot(q);
         if (i == j)
             return;
 
-        // Make smaller root point to larger one.
+        // Make smaller tree's root point to larger one's root.
         if (sz[i] < sz[j]) {
-            id[i] = j;
+            id[i] = j;      //i, j are still local variables
             sz[j] += sz[i];
-        } else {
+        }
+        else {
             id[j] = i;
             sz[i] += sz[j];
         }
